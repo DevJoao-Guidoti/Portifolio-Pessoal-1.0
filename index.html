@@ -11,8 +11,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Michroma:wght@400&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet">
-        <link type="image/png" sizes="32x32" rel="icon" href=".../icons8-linux-color-32.png">
-        <link type="image/png" sizes="32x32" rel="icon" href=".../icons8-código-ios7-32.png">
+    <link type="image/png" sizes="32x32" rel="icon" href=".../icons8-linux-color-32.png">
+    <link type="image/png" sizes="32x32" rel="icon" href=".../icons8-código-ios7-32.png">
     <style>
         :root {
             --branco-principal: #ffffff;
@@ -48,6 +48,7 @@
 
         .container-botoes {
             display: flex;
+            flex-direction: row;
             gap: 2rem;
             animation: fadeInUp 1s ease-out 0.6s both;
             flex-wrap: wrap;
@@ -732,13 +733,14 @@
             <h1 class="container_titulo">João Vitor Guidoti</h1>
             <p class="container_texto">Análise e Desenvolvimento de Sistemas</p>
             <div class="container-botoes">
-                <a href="./Currículo - João Vitor Xavier Guidoti.pdf" download="Curriculo_Joao_Vitor_Guidoti.pdf" class="btn-acao">
+                <a href="./Currículo - João Vitor Xavier Guidoti.pdf" download="Curriculo_Joao_Vitor_Guidoti.pdf"
+                    class="btn-acao">
                     <span class="btn-icon">📄</span>
                     Baixar Currículo
                 </a>
 
-                <a href="https://www.linkedin.com/in/jo%C3%A3o-v%C3%ADtor-guidoti-43b8a3373/" target="_blank" rel="noopener noreferrer"
-                    class="btn-acao">
+                <a href="https://www.linkedin.com/in/jo%C3%A3o-v%C3%ADtor-guidoti-43b8a3373/" target="_blank"
+                    rel="noopener noreferrer" class="btn-acao">
                     <svg class="linkedin-icon" viewBox="0 0 24 24">
                         <path
                             d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
@@ -774,17 +776,17 @@
                     <span class="tech-name">BOOTSTRAP</span>
                     <p class="tech-description">Framework Front-end </p>
                 </div>
-                 <div class="tech-card">
+                <div class="tech-card">
                     <img src="./img\laravel_logoM.svg" alt="laravel Logo">
                     <span class="tech-name">laravel</span>
                     <p class="tech-description">Framework MVC para PHP</p>
                 </div>
-                 <div class="tech-card">
+                <div class="tech-card">
                     <img src="./img/js_logoM.svg" alt="JavaScript Logo">
                     <span class="tech-name">JAVASCRIPT</span>
                     <p class="tech-description">Linguagem de script </p>
-                        
-            </div>
+
+                </div>
         </section>
 
         <!-- Seção de Projetos -->
@@ -804,7 +806,8 @@
                             <span class="tech-tag">HTML5</span>
                             <span class="tech-tag">CSS3</span>
                         </div>
-                        <a href="https://devjoao-guidoti.github.io/Alura-BootStrap/" class="projeto-link">Ver Projeto</a>
+                        <a href="https://devjoao-guidoti.github.io/Alura-BootStrap/" class="projeto-link">Ver
+                            Projeto</a>
                     </div>
                 </div>
 
@@ -820,16 +823,18 @@
                             <span class="tech-tag">HTML5</span>
                             <span class="tech-tag">CSS3</span>
                         </div>
-                        <a href="https://devjoao-guidoti.github.io/Alura-Portifolio/" class="projeto-link">Ver Projeto</a>
+                        <a href="https://devjoao-guidoti.github.io/Alura-Portifolio/" class="projeto-link">Ver
+                            Projeto</a>
                     </div>
                 </div>
-                 <div class="projeto-card">
+                <div class="projeto-card">
                     <div class="projeto-imagem">
                         <img class="projeto-imagem" src="./img\login-page.png">
                     </div>
                     <div class="projeto-conteudo">
                         <h3 class="projeto-titulo">Tela de Login</h3>
-                        <p class="projeto-descricao">Projeto de uma tela de login, feita na mesma paleta desse Portfólio.</p>
+                        <p class="projeto-descricao">Projeto de uma tela de login, feita na mesma paleta desse
+                            Portfólio.</p>
                         <div class="projeto-tecnologias">
                             <span class="tech-tag">HTML5</span>
                             <span class="tech-tag">CSS3</span>
@@ -837,7 +842,7 @@
                         <a href=" https://devjoao-guidoti.github.io/Login-Page/" class="projeto-link">Ver Projeto</a>
                     </div>
                 </div>
-                 <div class="projeto-card">
+                <div class="projeto-card">
                     <div class="projeto-imagem">
                         <img class="projeto-imagem" src=".\img\DevClub-Portifolio.png">
                     </div>
@@ -848,10 +853,11 @@
                             <span class="tech-tag">HTML5</span>
                             <span class="tech-tag">CSS3</span>
                         </div>
-                        <a href=" https://devjoao-guidoti.github.io/DevClub-Portifolio/" class="projeto-link">Ver Projeto</a>
+                        <a href=" https://devjoao-guidoti.github.io/DevClub-Portifolio/" class="projeto-link">Ver
+                            Projeto</a>
                     </div>
                 </div>
-                 <div class="projeto-card">
+                <div class="projeto-card">
                     <div class="projeto-imagem">
                         <img class="projeto-imagem" src=".\img\Screenshot_36 1.png">
                     </div>
@@ -863,7 +869,8 @@
                             <span class="tech-tag">CSS3</span>
                             <span class="tech-tag">JAVASCRIPT</span>
                         </div>
-                        <a href="https://devjoao-guidoti.github.io/Youtube-RelogioDigital/" class="projeto-link">Ver Projeto</a>
+                        <a href="https://devjoao-guidoti.github.io/Youtube-RelogioDigital/" class="projeto-link">Ver
+                            Projeto</a>
                     </div>
                 </div>
 
@@ -918,57 +925,104 @@
         <!-- Nova Seção de Certificações -->
         <section class="certificacoes">
             <h2 class="container_sobre">Certificações</h2>
-            
+
             <div class="certificacoes-grid">
-                 <div class="certificacao-card">
-                    <div class="certificacao-icone"><img src="img\bootstrap.png"></div>
-                    <h3 class="certificacao-titulo">Bootstrap5</h3>
-                    <p class="certificacao-instituicao">Crie uma landing page responsiva</p>
-                    <p class="certificacao-ano">2025</p>
-                    <div class="container-botoes">
-                <a href="Joao Vitor Guidoti - Curso Bootstrap5_ crie uma landing page responsiva - Alura.pdf" download=" Certificado de Conclusão (Curso Alura)" class="btn-acao">
-                    <span class="btn-icon">📄</span>
-                    Baixar Certificado
-                </a>
-                </div>
-            </div>
+                
                 <div class="certificacao-card">
                     <div class="certificacao-icone"><img src="img\icon_dev.png"></div>
                     <h3 class="certificacao-titulo">Desenvolvimento Web - (FUNDAÇÃO BRADESCO)</h3>
                     <p class="certificacao-instituicao">CRIE UM SITE SIMPLES USANDO HTML, CSS E JAVASCRIPT</p>
                     <p class="certificacao-ano">2025</p>
                     <div class="container-botoes">
-                <a href="./Certificado de Conclusão (BRADESCO).pdf" download="Certificado de Conclusão (BRADESCO)" class="btn-acao">
-                    <span class="btn-icon">📄</span>
-                    Baixar Certificado
-                </a>
+                        <a href="./Certificado de Conclusão (BRADESCO).pdf"
+                            download="Certificado de Conclusão (BRADESCO)" class="btn-acao">
+                            <span class="btn-icon">📄</span>
+                            Baixar Certificado
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="certificacao-card">
+                <div class="certificacao-card">
                     <div class="certificacao-icone"><img src="img\icon_linux.png"></div>
                     <h3 class="certificacao-titulo">Linux</h3>
-                    <p class="certificacao-instituicao">FUNDAMENTOS DO LINUX, DESDE A INSTALAÇÃO E CONFIGURAÇÃO ATÉ OS COMANDOS BÁSICOS, GARANTINDO UMA BASE SÓLIDA PARA EXPLORAR MAIS A FUNDO ESTE PODEROSO SISTEMA OPERACIONAL.
+                    <p class="certificacao-instituicao">FUNDAMENTOS DO LINUX, DESDE A INSTALAÇÃO E CONFIGURAÇÃO ATÉ OS
+                        COMANDOS BÁSICOS, GARANTINDO UMA BASE SÓLIDA PARA EXPLORAR MAIS A FUNDO ESTE PODEROSO SISTEMA
+                        OPERACIONAL.
                     </p>
                     <p class="certificacao-ano">2025</p>
                     <div class="container-botoes">
-                <a href="./Joao-Vitor-Xavier-Guidoti-Linux-40-Horas-Certificado-Curso-em-Video.pdf" download=" Certificado de Conclusão (Curso em Vídeo)" class="btn-acao">
-                    <span class="btn-icon">📄</span>
-                    Baixar Certificado
-                </a>
+                        <a href="./Joao-Vitor-Xavier-Guidoti-Linux-40-Horas-Certificado-Curso-em-Video.pdf"
+                            download=" Certificado de Conclusão (Curso em Vídeo)" class="btn-acao">
+                            <span class="btn-icon">📄</span>
+                            Baixar Certificado
+                        </a>
+                    </div>
                 </div>
-            </div>
-             <div class="certificacao-card">
+                <div class="certificacao-card">
                     <div class="certificacao-icone"><img src="img\laravel .png"></div>
                     <h3 class="certificacao-titulo">Laravel</h3>
                     <p class="certificacao-instituicao"> CRUD E ESTILIZAÇÃO COM TAILWINDCSS</p>
                     <p class="certificacao-ano">2025</p>
                     <div class="container-botoes">
-                <a href="./certificado-especializati.pdf" download=" Certificado de Conclusão (Curso Especializati)" class="btn-acao">
-                    <span class="btn-icon">📄</span>
-                    Baixar Certificado
-                </a>
+                        <a href="./certificado-especializati.pdf"
+                            download=" Certificado de Conclusão (Curso Especializati)" class="btn-acao">
+                            <span class="btn-icon">📄</span>
+                            Baixar Certificado
+                        </a>
+                    </div>
                 </div>
-            </div>
+
+                <div class="certificacao-card">
+                    <div class="certificacao-icone"><img src="img\bootstrap.png"></div>
+                    <h3 class="certificacao-titulo">Bootstrap5</h3>
+                    <p class="certificacao-instituicao">CRIE UMA LANDING PAGE RESPONSIVA</p>
+                    <p class="certificacao-ano">2025</p>
+                    <div class="container-botoes">
+                        <a href="Joao Vitor Guidoti - Curso Bootstrap5_ crie uma landing page responsiva - Alura.pdf"
+                            download=" Certificado de Conclusão (Curso Alura)" class="btn-acao">
+                            <span class="btn-icon">📄</span>
+                            Baixar Certificado
+                        </a>
+                    </div>
+                </div>
+
+                <div class="certificacao-card">
+                    <div class="certificacao-icone"><img src="img/coding.png"></div>
+                    <h3 class="certificacao-titulo">HTML e CSS</h3>
+                    <p class="certificacao-instituicao"> AMBIENTES DE DESENVOLVIMENTO, ESTRUTURA DE ARQUIVOS E TAGS.</p>
+                    <p class="certificacao-ano">2025</p>
+                    <div class="container-botoes">
+                        <a href="./Joao Vitor Guidoti - Curso HTML e CSS_ ambientes de desenvolvimento, estrutura de arquivos e tags - Alura.pdf" download="" class="btn-acao">
+                            <span class="btn-icon">📄</span>
+                            Baixar Certificado
+                        </a>
+                    </div>
+                </div>
+
+                <div class="certificacao-card">
+                    <div class="certificacao-icone"><img src="img/coding.png"></div>
+                    <h3 class="certificacao-titulo">HTML E CSS</h3>
+                    <p class="certificacao-instituicao">CLASSES, POSICIONAMENTO E FLEXBOX</p>
+                    <p class="certificacao-ano">2025</p>
+                    <div class="container-botoes">
+                        <a href="./Joao Vitor Guidoti - Curso HTML e CSS_ Classes, posicionamento e Flexbox - Alura.pdf" download="" class="btn-acao">
+                            <span class="btn-icon">📄</span>
+                            Baixar Certificado
+                        </a>
+                    </div>
+                </div>
+
+                  <div class="certificacao-card">
+                    <div class="certificacao-icone"><img src="img/coding.png"></div>
+                    <h3 class="certificacao-titulo">HTML E CSS</h3>
+                    <p class="certificacao-instituicao">CABEÇALHO, FOOTER E VARIÁVEIS CSS</p>
+                    <p class="certificacao-ano">2025</p>
+                    <div class="container-botoes">
+                        <a href="./Joao Vitor Guidoti - Curso HTML e CSS_ ambientes de desenvolvimento, estrutura de arquivos e tags - Alura (1).pdf" download="" class="btn-acao">
+                            <span class="btn-icon">📄</span>
+                            Baixar Certificado
+                        </a>
+                    </div>
+                </div>
         </section>
     </main>
 
