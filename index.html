@@ -561,7 +561,7 @@
             z-index: 1;
         }
 
-        /* Nova Seção de Certificações */
+        /* Nova Seção de Certificações com Carrossel */
         .certificacoes {
             min-height: 100vh;
             display: flex;
@@ -570,17 +570,36 @@
             align-items: center;
             padding: 4rem 2rem;
             background: var(--gradiente-principal);
+            position: relative;
+            overflow: hidden;
         }
 
-        .certificacoes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1000px;
+        .certificacoes-container {
             width: 100%;
+            height: 400px;
+            position: relative;
+            mask-image: linear-gradient(to right, transparent, #000 10% 90%, transparent);
+        }
+
+        .certificacoes-container:hover .certificacao-card {
+            animation-play-state: paused;
+            filter: grayscale(1);
+        }
+
+        .certificacoes-container .certificacao-card:hover {
+            filter: grayscale(0);
+        }
+
+        .certificacoes-carrossel {
+            width: 100%;
+            display: flex;
+            position: relative;
+            height: 100%;
         }
 
         .certificacao-card {
+            width: 290px;
+            height: 350px;
             background: var(--background-card);
             border-radius: 16px;
             padding: 2rem;
@@ -588,14 +607,23 @@
             border: 1px solid rgba(255, 231, 0, 0.1);
             box-shadow: var(--sombra-card);
             transition: all 0.3s ease;
-            animation: scaleIn 0.6s ease-out;
+            position: absolute;
+            left: 100%;
+            animation: autoRun 10s linear infinite;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .certificacao-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), var(--sombra-neon);
-            border-color: var(--neon-principal);
-        }
+        .certificacao-card:nth-child(1) { animation-delay: calc(10s / 7 * 1); }
+        .certificacao-card:nth-child(2) { animation-delay: calc(10s / 7 * 2); }
+        .certificacao-card:nth-child(3) { animation-delay: calc(10s / 7 * 3); }
+        .certificacao-card:nth-child(4) { animation-delay: calc(10s / 7 * 4); }
+        .certificacao-card:nth-child(5) { animation-delay: calc(10s / 7 * 5); }
+        .certificacao-card:nth-child(6) { animation-delay: calc(10s / 7 * 6); }
+        .certificacao-card:nth-child(7) { animation-delay: calc(10s / 7 * 7); }
 
         .certificacao-icone {
             width: 60px;
@@ -610,23 +638,56 @@
             color: var(--preto-principal);
         }
 
+        .certificacao-icone img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
         .certificacao-titulo {
             color: var(--neon-principal);
             font-family: var(--fonte-principal);
-            font-size: 1.1rem;
+            font-size: 1rem;
             margin-bottom: 0.5rem;
             letter-spacing: 1px;
+            line-height: 1.2;
         }
 
         .certificacao-instituicao {
             color: var(--branco-principal);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             margin-bottom: 0.5rem;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            line-height: 1.3;
         }
 
         .certificacao-ano {
             color: var(--texto-secundario);
             font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .certificacao-card .container-botoes {
+            margin-top: 0;
+            gap: 0;
+        }
+
+        .certificacao-card .btn-acao {
+            min-width: auto;
+            font-size: 0.7rem;
+            padding: 0.6rem 1rem;
+        }
+
+        @keyframes autoRun {
+            from {
+                left: 100%;
+            }
+            to {
+                left: -350px;
+            }
         }
 
         /* Scroll suave */
@@ -638,8 +699,7 @@
         @media (max-width: 768px) {
 
             .container_lista,
-            .projetos-grid,
-            .certificacoes-grid {
+            .projetos-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -670,6 +730,16 @@
 
             .experiencia-ponto {
                 left: 20px;
+            }
+
+            .certificacao-card {
+                width: 280px;
+                height: 320px;
+                padding: 1.5rem;
+            }
+
+            .certificacoes-container {
+                height: 350px;
             }
         }
 
@@ -708,18 +778,6 @@
 
         .experiencia-item:nth-child(3) {
             animation-delay: 0.6s;
-        }
-
-        .certificacao-card:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .certificacao-card:nth-child(2) {
-            animation-delay: 0.3s;
-        }
-
-        .certificacao-card:nth-child(3) {
-            animation-delay: 0.5s;
         }
     </style>
 
@@ -922,107 +980,118 @@
             </div>
         </section>
 
-        <!-- Nova Seção de Certificações -->
+        <!-- Nova Seção de Certificações com Carrossel -->
         <section class="certificacoes">
             <h2 class="container_sobre">Certificações</h2>
-
-            <div class="certificacoes-grid">
-                
-                <div class="certificacao-card">
-                    <div class="certificacao-icone"><img src="img\icon_dev.png"></div>
-                    <h3 class="certificacao-titulo">Desenvolvimento Web - (FUNDAÇÃO BRADESCO)</h3>
-                    <p class="certificacao-instituicao">CRIE UM SITE SIMPLES USANDO HTML, CSS E JAVASCRIPT</p>
-                    <p class="certificacao-ano">2025</p>
-                    <div class="container-botoes">
-                        <a href="./Certificado de Conclusão (BRADESCO).pdf"
-                            download="Certificado de Conclusão (BRADESCO)" class="btn-acao">
-                            <span class="btn-icon">📄</span>
-                            Baixar Certificado
-                        </a>
+            
+            <div class="certificacoes-container">
+                <div class="certificacoes-carrossel">
+                    <div class="certificacao-card">
+                        <div class="certificacao-icone">
+                            <img src="img\icon_dev.png" alt="Dev Icon">
+                        </div>
+                        <h3 class="certificacao-titulo">Desenvolvimento Web</h3>
+                        <p class="certificacao-instituicao">CRIE UM SITE SIMPLES USANDO HTML, CSS E JAVASCRIPT - FUNDAÇÃO BRADESCO</p>
+                        <p class="certificacao-ano">2025</p>
+                        <div class="container-botoes">
+                            <a href="Certificado de Conclusão (BRADESCO).pdf" class="btn-acao">
+                                <span class="btn-icon">📄</span>
+                                Ver Certificado
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="certificacao-card">
+                        <div class="certificacao-icone">
+                            <img src="img\icon_linux.png " alt="Linux Icon">
+                        </div>
+                        <h3 class="certificacao-titulo">Linux</h3>
+                        <p class="certificacao-instituicao">FUNDAMENTOS DO LINUX, DESDE A INSTALAÇÃO E CONFIGURAÇÃO ATÉ OS COMANDOS BÁSICOS</p>
+                        <p class="certificacao-ano">2025</p>
+                        <div class="container-botoes">
+                            <a href="Joao-Vitor-Xavier-Guidoti-Linux-40-Horas-Certificado-Curso-em-Video.pdf" class="btn-acao">
+                                <span class="btn-icon">📄</span>
+                                Ver Certificado
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="certificacao-card">
+                        <div class="certificacao-icone">
+                            <img src="img\laravel .png" alt="Laravel Icon">
+                        </div>
+                        <h3 class="certificacao-titulo">Laravel</h3>
+                        <p class="certificacao-instituicao">CRUD E ESTILIZAÇÃO COM TAILWINDCSS</p>
+                        <p class="certificacao-ano">2025</p>
+                        <div class="container-botoes">
+                            <a href="certificado-especializati.pdf" class="btn-acao">
+                                <span class="btn-icon">📄</span>
+                                Ver Certificado
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="certificacao-card">
+                        <div class="certificacao-icone">
+                            <img src="img\bootstrap.png" alt="Bootstrap Icon">
+                        </div>
+                        <h3 class="certificacao-titulo">Bootstrap5</h3>
+                        <p class="certificacao-instituicao">CRIE UMA LANDING PAGE RESPONSIVA - ALURA</p>
+                        <p class="certificacao-ano">2025</p>
+                        <div class="container-botoes">
+                            <a href="Joao Vitor Guidoti - Curso Bootstrap5_ crie uma landing page responsiva - Alura.pdf" class="btn-acao">
+                                <span class="btn-icon">📄</span>
+                                Ver Certificado
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="certificacao-card">
+                        <div class="certificacao-icone">
+                            <img src="img\coding.png" alt="HTML CSS Icon">
+                        </div>
+                        <h3 class="certificacao-titulo">HTML e CSS</h3>
+                        <p class="certificacao-instituicao">AMBIENTES DE DESENVOLVIMENTO, ESTRUTURA DE ARQUIVOS E TAGS - ALURA</p>
+                        <p class="certificacao-ano">2025</p>
+                        <div class="container-botoes">
+                            <a href="Joao Vitor Guidoti - Curso HTML e CSS_ ambientes de desenvolvimento, estrutura de arquivos e tags - Alura.pdf" class="btn-acao">
+                                <span class="btn-icon">📄</span>
+                                Ver Certificado
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="certificacao-card">
+                        <div class="certificacao-icone">
+                            <img src="img\coding.png" alt="HTML CSS Icon">
+                        </div>
+                        <h3 class="certificacao-titulo">HTML E CSS</h3>
+                        <p class="certificacao-instituicao">CLASSES, POSICIONAMENTO E FLEXBOX - ALURA</p>
+                        <p class="certificacao-ano">2025</p>
+                        <div class="container-botoes">
+                            <a href="Joao Vitor Guidoti - Curso HTML e CSS_ Classes, posicionamento e Flexbox - Alura.pdf" class="btn-acao">
+                                <span class="btn-icon">📄</span>
+                                Ver Certificado
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="certificacao-card">
+                        <div class="certificacao-icone">
+                            <img src="img\coding.png" alt="HTML CSS Icon">
+                        </div>
+                        <h3 class="certificacao-titulo">HTML E CSS</h3>
+                        <p class="certificacao-instituicao">CABEÇALHO, FOOTER E VARIÁVEIS CSS - ALURA</p>
+                        <p class="certificacao-ano">2025</p>
+                        <div class="container-botoes">
+                            <a href="Joao Vitor Guidoti - Curso HTML e CSS_ cabeçalho, footer e variáveis CSS - Alura.pdf" class="btn-acao">
+                                <span class="btn-icon">📄</span>
+                                Ver Certificado
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="certificacao-card">
-                    <div class="certificacao-icone"><img src="img\icon_linux.png"></div>
-                    <h3 class="certificacao-titulo">Linux</h3>
-                    <p class="certificacao-instituicao">FUNDAMENTOS DO LINUX, DESDE A INSTALAÇÃO E CONFIGURAÇÃO ATÉ OS
-                        COMANDOS BÁSICOS, GARANTINDO UMA BASE SÓLIDA PARA EXPLORAR MAIS A FUNDO ESTE PODEROSO SISTEMA
-                        OPERACIONAL.
-                    </p>
-                    <p class="certificacao-ano">2025</p>
-                    <div class="container-botoes">
-                        <a href="./Joao-Vitor-Xavier-Guidoti-Linux-40-Horas-Certificado-Curso-em-Video.pdf"
-                            download=" Certificado de Conclusão (Curso em Vídeo)" class="btn-acao">
-                            <span class="btn-icon">📄</span>
-                            Baixar Certificado
-                        </a>
-                    </div>
-                </div>
-                <div class="certificacao-card">
-                    <div class="certificacao-icone"><img src="img\laravel .png"></div>
-                    <h3 class="certificacao-titulo">Laravel</h3>
-                    <p class="certificacao-instituicao"> CRUD E ESTILIZAÇÃO COM TAILWINDCSS</p>
-                    <p class="certificacao-ano">2025</p>
-                    <div class="container-botoes">
-                        <a href="./certificado-especializati.pdf"
-                            download=" Certificado de Conclusão (Curso Especializati)" class="btn-acao">
-                            <span class="btn-icon">📄</span>
-                            Baixar Certificado
-                        </a>
-                    </div>
-                </div>
-
-                <div class="certificacao-card">
-                    <div class="certificacao-icone"><img src="img\bootstrap.png"></div>
-                    <h3 class="certificacao-titulo">Bootstrap5</h3>
-                    <p class="certificacao-instituicao">CRIE UMA LANDING PAGE RESPONSIVA</p>
-                    <p class="certificacao-ano">2025</p>
-                    <div class="container-botoes">
-                        <a href="Joao Vitor Guidoti - Curso Bootstrap5_ crie uma landing page responsiva - Alura.pdf"
-                            download=" Certificado de Conclusão (Curso Alura)" class="btn-acao">
-                            <span class="btn-icon">📄</span>
-                            Baixar Certificado
-                        </a>
-                    </div>
-                </div>
-
-                <div class="certificacao-card">
-                    <div class="certificacao-icone"><img src="img/coding.png"></div>
-                    <h3 class="certificacao-titulo">HTML e CSS</h3>
-                    <p class="certificacao-instituicao"> AMBIENTES DE DESENVOLVIMENTO, ESTRUTURA DE ARQUIVOS E TAGS.</p>
-                    <p class="certificacao-ano">2025</p>
-                    <div class="container-botoes">
-                        <a href="./Joao Vitor Guidoti - Curso HTML e CSS_ ambientes de desenvolvimento, estrutura de arquivos e tags - Alura.pdf" download="" class="btn-acao">
-                            <span class="btn-icon">📄</span>
-                            Baixar Certificado
-                        </a>
-                    </div>
-                </div>
-
-                <div class="certificacao-card">
-                    <div class="certificacao-icone"><img src="img/coding.png"></div>
-                    <h3 class="certificacao-titulo">HTML E CSS</h3>
-                    <p class="certificacao-instituicao">CLASSES, POSICIONAMENTO E FLEXBOX</p>
-                    <p class="certificacao-ano">2025</p>
-                    <div class="container-botoes">
-                        <a href="./Joao Vitor Guidoti - Curso HTML e CSS_ Classes, posicionamento e Flexbox - Alura.pdf" download="" class="btn-acao">
-                            <span class="btn-icon">📄</span>
-                            Baixar Certificado
-                        </a>
-                    </div>
-                </div>
-
-                  <div class="certificacao-card">
-                    <div class="certificacao-icone"><img src="img/coding.png"></div>
-                    <h3 class="certificacao-titulo">HTML E CSS</h3>
-                    <p class="certificacao-instituicao">CABEÇALHO, FOOTER E VARIÁVEIS CSS</p>
-                    <p class="certificacao-ano">2025</p>
-                    <div class="container-botoes">
-                        <a href="./Joao Vitor Guidoti - Curso HTML e CSS_ ambientes de desenvolvimento, estrutura de arquivos e tags - Alura (1).pdf" download="" class="btn-acao">
-                            <span class="btn-icon">📄</span>
-                            Baixar Certificado
-                        </a>
-                    </div>
-                </div>
+            </div>
         </section>
     </main>
 
