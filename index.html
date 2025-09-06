@@ -552,7 +552,11 @@
             z-index: 1;
         }
 
+<<<<<<< HEAD
         /* Seção de Certificações com Carrossel Melhorado */
+=======
+        /* Seção de Certificações Responsiva */
+>>>>>>> 0a7ceb209d8c5f8eb29b77fbc8ca539181b2ce81
         .certificacoes {
             min-height: 100vh;
             display: flex;
@@ -565,23 +569,51 @@
             overflow: hidden;
         }
 
+        /* Desktop - Carrossel simples */
         .certificacoes-container {
             width: 100%;
+            max-width: 1200px;
             height: 400px;
             position: relative;
             overflow: hidden;
             mask-image: linear-gradient(to right, transparent, #000 10% 90%, transparent);
+<<<<<<< HEAD
             -webkit-mask-image: linear-gradient(to right, transparent, #000 10% 90%, transparent);
+=======
+            overflow: hidden;
+>>>>>>> 0a7ceb209d8c5f8eb29b77fbc8ca539181b2ce81
         }
 
         .certificacoes-carrossel {
             position: relative;
             width: 100%;
             height: 100%;
+<<<<<<< HEAD
+=======
+            gap: 2rem;
+        }
+
+        .certificacao-card {
+            width: 280px;
+            min-width: 280px;
+            height: 350px;
+            background: var(--background-card);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 231, 0, 0.1);
+            box-shadow: var(--sombra-card);
+            transition: all 0.3s ease;
+            position: absolute;
+            left: 100%;
+            animation: autoRun 15s linear infinite;
+            cursor: pointer;
+>>>>>>> 0a7ceb209d8c5f8eb29b77fbc8ca539181b2ce81
             display: flex;
             align-items: center;
         }
 
+<<<<<<< HEAD
        .certificacao-card {
     width: 280px;
     min-width: 280px;
@@ -635,6 +667,35 @@
             filter: grayscale(0) !important;
             transform: translateY(-50%) scale(1.05);
             z-index: 10;
+=======
+        /* Animação do carrossel desktop */
+        @keyframes autoRun {
+            from {
+                left: 100%;
+            }
+            to {
+                left: -320px;
+            }
+        }
+
+        /* Delays para cada card */
+        .certificacao-card:nth-child(1) { animation-delay: calc(15s / 7 * 0); }
+        .certificacao-card:nth-child(2) { animation-delay: calc(15s / 7 * 1); }
+        .certificacao-card:nth-child(3) { animation-delay: calc(15s / 7 * 2); }
+        .certificacao-card:nth-child(4) { animation-delay: calc(15s / 7 * 3); }
+        .certificacao-card:nth-child(5) { animation-delay: calc(15s / 7 * 4); }
+        .certificacao-card:nth-child(6) { animation-delay: calc(15s / 7 * 5); }
+        .certificacao-card:nth-child(7) { animation-delay: calc(15s / 7 * 6); }
+
+        .certificacoes-container:hover .certificacao-card {
+            animation-play-state: paused;
+            filter: grayscale(1);
+        }
+
+        .certificacoes-container .certificacao-card:hover {
+            filter: grayscale(0);
+            transform: scale(1.05);
+>>>>>>> 0a7ceb209d8c5f8eb29b77fbc8ca539181b2ce81
         }
 
         .certificacao-icone {
@@ -700,6 +761,7 @@
 
         /* RESPONSIVIDADE */
         
+<<<<<<< HEAD
         /* Desktop grande (1200px+) */
         @media (min-width: 1200px) {
             .certificacoes-container {
@@ -715,16 +777,72 @@
         }
 
         /* Tablet (768px - 1199px) */
+=======
+        /* Desktop grande (1200px+) - Carrossel padrão */
+        @media (min-width: 1200px) {
+            .certificacoes-container {
+                max-width: 1400px;
+            }
+            
+            .certificacao-card {
+                width: 220px;
+                min-width: 220px;
+            }
+        }
+
+        /* Tablet (768px - 1199px) - Duas linhas com carrossel */
+>>>>>>> 0a7ceb209d8c5f8eb29b77fbc8ca539181b2ce81
         @media (max-width: 1199px) and (min-width: 769px) {
             .certificacoes {
                 padding: 4rem 1rem;
             }
             
+<<<<<<< HEAD
             .certificacao-card {
                 width: 260px;
                 min-width: 260px;
                 height: 340px;
                 padding: 1.5rem;
+=======
+            .certificacoes-container {
+                height: 800px;
+                max-width: 800px;
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+                mask-image: none;
+            }
+            
+            .certificacoes-carrossel {
+                height: 380px;
+                mask-image: linear-gradient(to right, transparent, #000 10% 90%, transparent);
+            }
+            
+            .certificacao-card {
+                width: 240px;
+                min-width: 240px;
+                height: 320px;
+                padding: 1.5rem;
+                animation: autoRunTablet 12s linear infinite;
+            }
+            
+            @keyframes autoRunTablet {
+                from { left: 100%; }
+                to { left: -300px; }
+            }
+            
+            /* Primeira linha - primeiros 4 cards */
+            .certificacao-card:nth-child(1) { animation-delay: calc(12s / 4 * 0); }
+            .certificacao-card:nth-child(2) { animation-delay: calc(12s / 4 * 1); }
+            .certificacao-card:nth-child(3) { animation-delay: calc(12s / 4 * 2); }
+            .certificacao-card:nth-child(4) { animation-delay: calc(12s / 4 * 3); }
+            
+            /* Segunda linha - últimos 3 cards */
+            .certificacoes-carrossel:nth-child(2) .certificacao-card:nth-child(5),
+            .certificacoes-carrossel:nth-child(2) .certificacao-card:nth-child(6),
+            .certificacoes-carrossel:nth-child(2) .certificacao-card:nth-child(7) {
+                animation-delay: calc(12s / 3 * 1), calc(12s / 3 * 2), calc(12s / 3 * 3);
+>>>>>>> 0a7ceb209d8c5f8eb29b77fbc8ca539181b2ce81
             }
             
             .certificacao-titulo {
@@ -791,10 +909,16 @@
             
             .certificacoes-container {
                 height: auto;
+<<<<<<< HEAD
                 overflow: visible;
                 max-width: 100%;
                 mask-image: none;
                 -webkit-mask-image: none;
+=======
+                mask-image: none;
+                overflow: visible;
+                max-width: 100%;
+>>>>>>> 0a7ceb209d8c5f8eb29b77fbc8ca539181b2ce81
             }
             
             .certificacoes-carrossel {
