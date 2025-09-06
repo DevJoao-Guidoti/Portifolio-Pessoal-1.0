@@ -13,7 +13,7 @@
         rel="stylesheet">
     <link type="image/png" sizes="32x32" rel="icon" href=".../icons8-linux-color-32.png">
     <link type="image/png" sizes="32x32" rel="icon" href=".../icons8-código-ios7-32.png">
-    <style>
+     <style>
         :root {
             --branco-principal: #ffffff;
             --preto-principal: #000000;
@@ -29,7 +29,6 @@
             --sombra-card: 0 8px 32px rgba(0, 0, 0, 0.3);
             --gradiente-principal: linear-gradient(135deg, var(--background) 0%, var(--background-secondary) 100%);
         }
-
 
         * {
             margin: 0;
@@ -117,20 +116,7 @@
             transform: scale(1.2);
         }
 
-        @media (max-width: 768px) {
-            .container-botoes {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            .btn-acao {
-                width: 100%;
-                max-width: 220px;
-            }
-        }
-
-        /* Animação de fade-in */
+        /* Animações */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -403,6 +389,13 @@
             font-family: var(--fonte-principal);
             font-size: 1.2rem;
             border-bottom: 1px solid rgba(255, 231, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .projeto-imagem img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .projeto-conteudo {
@@ -455,8 +448,6 @@
             pointer-events: auto;
             position: relative;
             z-index: 10;
-            display: inline-block;
-
         }
 
         .projeto-link:hover {
@@ -561,7 +552,7 @@
             z-index: 1;
         }
 
-        /* Nova Seção de Certificações com Carrossel */
+        /* Seção de Certificações com Carrossel Melhorado */
         .certificacoes {
             min-height: 100vh;
             display: flex;
@@ -578,52 +569,73 @@
             width: 100%;
             height: 400px;
             position: relative;
+            overflow: hidden;
             mask-image: linear-gradient(to right, transparent, #000 10% 90%, transparent);
-        }
-
-        .certificacoes-container:hover .certificacao-card {
-            animation-play-state: paused;
-            filter: grayscale(1);
-        }
-
-        .certificacoes-container .certificacao-card:hover {
-            filter: grayscale(0);
+            -webkit-mask-image: linear-gradient(to right, transparent, #000 10% 90%, transparent);
         }
 
         .certificacoes-carrossel {
-            width: 100%;
-            display: flex;
             position: relative;
+            width: 100%;
             height: 100%;
-        }
-
-        .certificacao-card {
-            width: 290px;
-            height: 350px;
-            background: var(--background-card);
-            border-radius: 16px;
-            padding: 2rem;
-            text-align: center;
-            border: 1px solid rgba(255, 231, 0, 0.1);
-            box-shadow: var(--sombra-card);
-            transition: all 0.3s ease;
-            position: absolute;
-            left: 100%;
-            animation: autoRun 10s linear infinite;
-            cursor: pointer;
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
             align-items: center;
         }
 
-        .certificacao-card:nth-child(1) { animation-delay: calc(10s / 7 * 1); }
-        .certificacao-card:nth-child(2) { animation-delay: calc(10s / 7 * 2); }
-        .certificacao-card:nth-child(3) { animation-delay: calc(10s / 7 * 3); }
-        .certificacao-card:nth-child(4) { animation-delay: calc(10s / 7 * 4); }
-        .certificacao-card:nth-child(5) { animation-delay: calc(10s / 7 * 5); }
-        .certificacao-card:nth-child(6) { animation-delay: calc(10s / 7 * 6); }
-        .certificacao-card:nth-child(7) { animation-delay: calc(10s / 7 * 7); }
+       .certificacao-card {
+    width: 280px;
+    min-width: 280px;
+    height: 350px;
+    background: var(--background-card);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid rgba(255, 231, 0, 0.1);
+    box-shadow: var(--sombra-card);
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    /* Animação corrigida - começa FORA da tela à direita */
+    left: 100vw; /* Posição inicial fora da tela */
+    animation: slideCarouselCorreto 15s linear infinite;
+}
+
+      @keyframes slideCarouselCorreto {
+    0% {
+        left: 100vw; /* Começa totalmente fora da tela à direita */
+        opacity: 1;
+    }
+    100% {
+        left: -320px; /* Termina totalmente fora da tela à esquerda */
+        opacity: 1;
+    }
+}
+        /* Delays escalonados para criar fluxo contínuo */
+        .certificacao-card:nth-child(1) { animation-delay: 0s; }
+        .certificacao-card:nth-child(2) { animation-delay: 2.14s; }
+        .certificacao-card:nth-child(3) { animation-delay: 4.28s; }
+        .certificacao-card:nth-child(4) { animation-delay: 6.42s; }
+        .certificacao-card:nth-child(5) { animation-delay: 8.56s; }
+        .certificacao-card:nth-child(6) { animation-delay: 10.7s; }
+        .certificacao-card:nth-child(7) { animation-delay: 12.84s; }
+
+        /* Controles do carrossel */
+        .certificacoes-container:hover .certificacao-card {
+            animation-play-state: paused;
+            filter: grayscale(0.7);
+        }
+
+        .certificacao-card:hover {
+            filter: grayscale(0) !important;
+            transform: translateY(-50%) scale(1.05);
+            z-index: 10;
+        }
 
         .certificacao-icone {
             width: 60px;
@@ -681,23 +693,62 @@
             padding: 0.6rem 1rem;
         }
 
-        @keyframes autoRun {
-            from {
-                left: 100%;
-            }
-            to {
-                left: -350px;
-            }
-        }
-
         /* Scroll suave */
         html {
             scroll-behavior: smooth;
         }
 
-        /* Responsividade */
-        @media (max-width: 768px) {
+        /* RESPONSIVIDADE */
+        
+        /* Desktop grande (1200px+) */
+        @media (min-width: 1200px) {
+            .certificacoes-container {
+                max-width: none;
+                height: 450px;
+            }
+            
+            .certificacao-card {
+                width: 300px;
+                min-width: 300px;
+                height: 380px;
+            }
+        }
 
+        /* Tablet (768px - 1199px) */
+        @media (max-width: 1199px) and (min-width: 769px) {
+            .certificacoes {
+                padding: 4rem 1rem;
+            }
+            
+            .certificacao-card {
+                width: 260px;
+                min-width: 260px;
+                height: 340px;
+                padding: 1.5rem;
+            }
+            
+            .certificacao-titulo {
+                font-size: 0.9rem;
+            }
+            
+            .certificacao-instituicao {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Mobile (768px e abaixo) - Grid estático */
+        @media (max-width: 768px) {
+            .container-botoes {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .btn-acao {
+                width: 100%;
+                max-width: 220px;
+            }
+            
             .container_lista,
             .projetos-grid {
                 grid-template-columns: 1fr;
@@ -731,54 +782,96 @@
             .experiencia-ponto {
                 left: 20px;
             }
-
-            .certificacao-card {
-                width: 280px;
-                height: 320px;
-                padding: 1.5rem;
+            
+            /* Certificações mobile - Grid responsivo sem carrossel */
+            .certificacoes {
+                min-height: auto;
+                padding: 2rem 1rem;
             }
-
+            
             .certificacoes-container {
-                height: 350px;
+                height: auto;
+                overflow: visible;
+                max-width: 100%;
+                mask-image: none;
+                -webkit-mask-image: none;
+            }
+            
+            .certificacoes-carrossel {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                height: auto;
+                position: static;
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .certificacao-card {
+                position: static;
+                animation: none;
+                width: 100%;
+                min-width: auto;
+                height: auto;
+                min-height: 300px;
+                padding: 1.5rem;
+                opacity: 1;
+                transform: none;
+                filter: none;
+            }
+            
+            .certificacao-card:hover {
+                filter: none;
+                transform: translateY(-5px);
+            }
+            
+            .certificacao-titulo {
+                font-size: 0.9rem;
+            }
+            
+            .certificacao-instituicao {
+                font-size: 0.75rem;
+            }
+            
+            .certificacao-card .btn-acao {
+                font-size: 0.75rem;
+                padding: 0.7rem 1.2rem;
             }
         }
 
-        /* Animações de delay */
-        .tech-card:nth-child(1) {
-            animation-delay: 0.1s;
+        /* Mobile pequeno (480px e abaixo) */
+        @media (max-width: 480px) {
+            .certificacoes-carrossel {
+                max-width: 320px;
+            }
+            
+            .certificacao-card {
+                padding: 1.2rem;
+                min-height: 280px;
+            }
+            
+            .certificacao-titulo {
+                font-size: 0.85rem;
+            }
+            
+            .certificacao-instituicao {
+                font-size: 0.7rem;
+            }
         }
 
-        .tech-card:nth-child(2) {
-            animation-delay: 0.2s;
-        }
+        /* Animações de delay para outros elementos */
+        .tech-card:nth-child(1) { animation-delay: 0.1s; }
+        .tech-card:nth-child(2) { animation-delay: 0.2s; }
+        .tech-card:nth-child(3) { animation-delay: 0.3s; }
 
-        .tech-card:nth-child(3) {
-            animation-delay: 0.3s;
-        }
+        .projeto-card:nth-child(1) { animation-delay: 0.1s; }
+        .projeto-card:nth-child(2) { animation-delay: 0.3s; }
+        .projeto-card:nth-child(3) { animation-delay: 0.5s; }
 
-        .projeto-card:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .projeto-card:nth-child(2) {
-            animation-delay: 0.3s;
-        }
-
-        .projeto-card:nth-child(3) {
-            animation-delay: 0.5s;
-        }
-
-        .experiencia-item:nth-child(1) {
-            animation-delay: 0.2s;
-        }
-
-        .experiencia-item:nth-child(2) {
-            animation-delay: 0.4s;
-        }
-
-        .experiencia-item:nth-child(3) {
-            animation-delay: 0.6s;
-        }
+        .experiencia-item:nth-child(1) { animation-delay: 0.2s; }
+        .experiencia-item:nth-child(2) { animation-delay: 0.4s; }
+        .experiencia-item:nth-child(3) { animation-delay: 0.6s; }
     </style>
 
 
