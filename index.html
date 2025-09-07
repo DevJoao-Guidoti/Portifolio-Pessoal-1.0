@@ -13,6 +13,21 @@
         rel="stylesheet">
     <link type="image/png" sizes="32x32" rel="icon" href=".../icons8-linux-color-32.png">
     <link type="image/png" sizes="32x32" rel="icon" href=".../icons8-código-ios7-32.png">
+     <!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>João Vitor Guidoti - Portfólio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Michroma:wght@400&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link type="image/png" sizes="32x32" rel="icon" href=".../icons8-linux-color-32.png">
+    <link type="image/png" sizes="32x32" rel="icon" href=".../icons8-código-ios7-32.png">
      <style>
         :root {
             --branco-principal: #ffffff;
@@ -265,11 +280,11 @@
         }
 
         .container_lista {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            max-width: 600px;
+            max-width: 1000px;
+            width: 100%;
             animation: fadeInUp 1s ease-out 0.5s both;
         }
 
@@ -287,6 +302,9 @@
             position: relative;
             overflow: hidden;
             animation: scaleIn 0.6s ease-out;
+            /* Definindo altura fixa para todos os cards */
+            height: 280px;
+            justify-content: space-between;
         }
 
         .tech-card::before {
@@ -316,6 +334,7 @@
             object-fit: contain;
             transition: transform 0.3s ease;
             filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+            flex-shrink: 0;
         }
 
         .tech-card:hover img {
@@ -329,6 +348,8 @@
             font-weight: 400;
             text-transform: uppercase;
             letter-spacing: 1px;
+            text-align: center;
+            flex-shrink: 0;
         }
 
         .tech-description {
@@ -336,6 +357,11 @@
             color: var(--texto-secundario);
             text-align: center;
             font-weight: 300;
+            line-height: 1.4;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* Seção de Projetos */
@@ -366,6 +392,9 @@
             box-shadow: var(--sombra-card);
             position: relative;
             animation: slideInLeft 0.8s ease-out;
+              display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .projeto-card:nth-child(even) {
@@ -390,6 +419,7 @@
             font-size: 1.2rem;
             border-bottom: 1px solid rgba(255, 231, 0, 0.2);
             overflow: hidden;
+            flex-shrink: 0;
         }
 
         .projeto-imagem img {
@@ -400,6 +430,9 @@
 
         .projeto-conteudo {
             padding: 2rem;
+             display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .projeto-titulo {
@@ -415,6 +448,7 @@
             font-size: 0.95rem;
             margin-bottom: 1.5rem;
             line-height: 1.6;
+            flex-grow: 1;
         }
 
         .projeto-tecnologias {
@@ -448,6 +482,10 @@
             pointer-events: auto;
             position: relative;
             z-index: 10;
+            align-self: flex-start;
+            margin-top: auto;
+            align-self: flex-start;
+            margin-top: auto; 
         }
 
         .projeto-link:hover {
@@ -760,6 +798,13 @@
             .projeto-card {
                 width: 100%;
                 max-width: 100%;
+            }
+
+            /* Ajuste para cards de tecnologia em mobile */
+            .tech-card {
+                height: auto;
+                min-height: 250px;
+                padding: 1.5rem;
             }
 
             .principal,
