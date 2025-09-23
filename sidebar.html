@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar GATI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+
+        .main-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 280px;
+            height: 100vh;
+            background: linear-gradient(135deg, #e8e8e8 0%, #f0f0f0 100%);
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+
+        .content-area {
+            flex: 1;
+            margin-left: 280px;
+            padding: 40px;
+            background:black;
+            min-height: 100vh;
+        }
+
+        .profile-section {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .profile-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background-image: url(img/Imagem\ do\ WhatsApp\ de\ 2025-08-07\ à\(s\)\ 19.53.31_e51381bc\ 1.png);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            position: relative;
+        }
+
+        .profile-avatar::before {
+           background-image: url('img\Imagem do WhatsApp de 2025-08-07 à(s) 19.53.31_e51381bc.jpg');
+            font-size: 20px;
+        }
+
+        .profile-info h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 2px;
+        }
+
+        .profile-info span {
+            font-size: 11px;
+            color: #888;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .menu-section {
+            flex: 1;
+            padding: 8px 0;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 14px 20px;
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .menu-item:hover {
+            background-color: rgba(255,107,53,0.08);
+            color: #ff6b35;
+        }
+
+        .menu-item.active {
+            background: linear-gradient(90deg, #ff6b35, #f7931e);
+            color: white;
+            border-radius: 0 25px 25px 0;
+            margin-right: 8px;
+            box-shadow: 0 2px 8px rgba(255,107,53,0.3);
+        }
+
+        .menu-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .badge {
+            background-color: #888;
+            color: white;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-left: auto;
+            font-weight: 500;
+        }
+
+        .section-title {
+            padding: 20px 20px 8px 20px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .external-link::after {
+            content: '↗';
+            margin-left: auto;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .external-link:hover::after {
+            color: #ff6b35;
+        }
+
+        /* Icons usando CSS */
+        .icon-home::before { content: '🏠'; }
+        .icon-profile::before { content: '👤'; }
+        .icon-documents::before { content: '📄'; }
+        .icon-external::before { content: '🔗'; }
+        .icon-email::before { content: '📧'; }
+        .icon-video::before { content: '📹'; }
+
+           .news-carousel {
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .carousel-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .carousel-title {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+        }
+
+        .carousel-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-wrapper {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+            background: white;
+        }
+
+        .news-item {
+            display: flex;
+            min-height: 400px;
+        }
+
+        .news-image {
+            flex: 1;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .news-content {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .news-category {
+            background: linear-gradient(45deg, #FF6B6B, #FF8E53);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 20px;
+            width: fit-content;
+        }
+
+        .news-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .news-excerpt {
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .news-meta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            color: #95a5a6;
+            font-size: 0.9rem;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #2c3e50;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+
+        .carousel-controls:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .prev {
+            left: 15px;
+        }
+
+        .next {
+            right: 15px;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .news-item {
+                flex-direction: column;
+                min-height: auto;
+            }
+
+            .news-image {
+                height: 250px;
+            }
+
+            .news-content {
+                padding: 30px;
+            }
+
+            .news-title {
+                font-size: 1.5rem;
+            }
+
+            .carousel-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="sidebar">
+            <div class="profile-section">
+                <div class="profile-avatar"></div>
+                <div class="profile-info">
+                    <h3>João Vitor Guidoti</h3>
+                    <span>GATI</span>
+                </div>
+            </div>
+
+            <div class="menu-section">
+                <a href="#" class="menu-item active">
+                    <div class="menu-icon icon-home"></div>
+                    Home
+                </a>
+                
+                <a href="#" class="menu-item">
+                    <div class="menu-icon icon-profile"></div>
+                    Meu Perfil
+                </a>
+                
+                <a href="#" class="menu-item">
+                    <div class="menu-icon icon-documents"></div>
+                    Documentos
+                    <span class="badge">10</span>
+                </a>
+
+                <div class="section-title">Links Externos</div>
+
+                <a href="#" class="menu-item external-link">
+                    <div class="menu-icon icon-external"></div>
+                    GGR
+                </a>
+                
+                <a href="#" class="menu-item external-link">
+                    <div class="menu-icon icon-video"></div>
+                    E-CIGA
+                </a>
+                
+                <a href="#" class="menu-item external-link">
+                    <div class="menu-icon icon-email"></div>
+                    WebMail
+                </a>
+            </div>
+        </div>
+
+        <div class="content-area">
+            
+
+                <div class="carousel-container">
+                    <div class="carousel-wrapper" id="carouselWrapper">
+                        <div class="carousel-slide">
+                            <div class="news-item">
+                                <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                                <div class="news-content">
+                                    <span class="news-category">Tecnologia</span>
+                                    <h2 class="news-title">Inteligência Artificial Revoluciona o Mercado de Trabalho</h2>
+                                    <p class="news-excerpt">Empresas de todo o mundo estão adotando IA para automatizar processos e aumentar a produtividade, gerando debates sobre o futuro do trabalho humano.</p>
+                                    <div class="news-meta">
+                                        <span>📅 23 de Setembro, 2025</span>
+                                        <span>👤 João Silva</span>
+                                        <span>⏱️ 5 min de leitura</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <div class="news-item">
+                                <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                                <div class="news-content">
+                                    <span class="news-category">Meio Ambiente</span>
+                                    <h2 class="news-title">Energias Renováveis Batem Recorde Mundial</h2>
+                                    <p class="news-excerpt">A capacidade global de energia renovável atingiu marcos históricos, com investimentos massivos em solar e eólica transformando a matriz energética mundial.</p>
+                                    <div class="news-meta">
+                                        <span>📅 22 de Setembro, 2025</span>
+                                        <span>👤 Maria Santos</span>
+                                        <span>⏱️ 7 min de leitura</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <div class="news-item">
+                                <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                                <div class="news-content">
+                                    <span class="news-category">Ciência</span>
+                                    <h2 class="news-title">Descoberta Revolucionária na Medicina Espacial</h2>
+                                    <p class="news-excerpt">Cientistas descobrem como a microgravidade pode acelerar processos de cura, abrindo novas possibilidades para tratamentos médicos inovadores.</p>
+                                    <div class="news-meta">
+                                        <span>📅 21 de Setembro, 2025</span>
+                                        <span>👤 Dr. Carlos Lima</span>
+                                        <span>⏱️ 6 min de leitura</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <div class="news-item">
+                                <div class="news-image" style="background-image: url('https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                                <div class="news-content">
+                                    <span class="news-category">Economia</span>
+                                    <h2 class="news-title">Criptomoedas Ganham Regulamentação Global</h2>
+                                    <p class="news-excerpt">Principais economias mundiais chegam a acordo sobre regulamentação de criptomoedas, trazendo mais segurança e estabilidade ao mercado digital.</p>
+                                    <div class="news-meta">
+                                        <span>📅 20 de Setembro, 2025</span>
+                                        <span>👤 Ana Costa</span>
+                                        <span>⏱️ 4 min de leitura</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="carousel-controls prev" onclick="prevSlide()">‹</button>
+                    <button class="carousel-controls next" onclick="nextSlide()">›</button>
+                </div>
+
+                <div class="carousel-indicators" id="indicators"></div>
+            
+
+            <!-- Seção adicional para demonstrar scroll -->
+            <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 30px; margin-bottom: 40px; border: 1px solid rgba(255, 255, 255, 0.2);">
+                <h2 style="color: white; text-align: center; margin-bottom: 20px;">Outra Seção de Conteúdo</h2>
+                <p style="color: rgba(255, 255, 255, 0.8); text-align: center; line-height: 1.6;">
+                    Aqui você pode adicionar mais conteúdo como cards, tabelas, formulários, etc. 
+                    A página agora permite scroll vertical para acomodar todo o conteúdo necessário.
+                </p>
+            </div>
+
+            <!-- Mais uma seção para demonstrar -->
+            <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 30px; margin-bottom: 40px; border: 1px solid rgba(255, 255, 255, 0.2);">
+                <h2 style="color: white; text-align: center; margin-bottom: 20px;">Seção de Estatísticas</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                    <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 10px; text-align: center;">
+                        <h3 style="color: #ff6b35; font-size: 2rem; margin-bottom: 10px;">150+</h3>
+                        <p style="color: rgba(255, 255, 255, 0.8);">Usuários Ativos</p>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 10px; text-align: center;">
+                        <h3 style="color: #ff6b35; font-size: 2rem; margin-bottom: 10px;">50+</h3>
+                        <p style="color: rgba(255, 255, 255, 0.8);">Documentos</p>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 10px; text-align: center;">
+                        <h3 style="color: #ff6b35; font-size: 2rem; margin-bottom: 10px;">24/7</h3>
+                        <p style="color: rgba(255, 255, 255, 0.8);">Suporte</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Adiciona interatividade aos itens do menu
+        const menuItems = document.querySelectorAll('.menu-item');
+        
+        menuItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                // Remove active de todos os itens
+                menuItems.forEach(i => i.classList.remove('active'));
+                
+                // Adiciona active ao item clicado (apenas para itens internos)
+                if (!this.classList.contains('external-link')) {
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Adiciona efeito hover mais suave
+        menuItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                if (!this.classList.contains('active') && !this.classList.contains('external-link')) {
+                    this.style.transform = 'translateX(4px)';
+                }
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
+            });
+        });
+
+         class NewsCarousel {
+            constructor() {
+                this.currentSlide = 0;
+                this.wrapper = document.getElementById('carouselWrapper');
+                this.slides = this.wrapper.children;
+                this.totalSlides = this.slides.length;
+                this.indicators = document.getElementById('indicators');
+                this.autoPlayInterval = null;
+                
+                this.init();
+            }
+
+            init() {
+                this.createIndicators();
+                this.updateIndicators();
+                this.startAutoPlay();
+                
+                // Touch events para mobile
+                let startX = 0;
+                let endX = 0;
+                
+                this.wrapper.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                });
+                
+                this.wrapper.addEventListener('touchend', (e) => {
+                    endX = e.changedTouches[0].clientX;
+                    if (startX - endX > 50) {
+                        this.nextSlide();
+                    } else if (endX - startX > 50) {
+                        this.prevSlide();
+                    }
+                });
+                
+                // Pausar autoplay quando hover
+                const carousel = document.querySelector('.news-carousel');
+                carousel.addEventListener('mouseenter', () => this.stopAutoPlay());
+                carousel.addEventListener('mouseleave', () => this.startAutoPlay());
+            }
+
+            createIndicators() {
+                for (let i = 0; i < this.totalSlides; i++) {
+                    const indicator = document.createElement('div');
+                    indicator.className = 'indicator';
+                    indicator.addEventListener('click', () => this.goToSlide(i));
+                    this.indicators.appendChild(indicator);
+                }
+            }
+
+            updateIndicators() {
+                const indicators = this.indicators.children;
+                for (let i = 0; i < indicators.length; i++) {
+                    indicators[i].classList.toggle('active', i === this.currentSlide);
+                }
+            }
+
+            goToSlide(index) {
+                this.currentSlide = index;
+                const offset = -this.currentSlide * 100;
+                this.wrapper.style.transform = `translateX(${offset}%)`;
+                this.updateIndicators();
+            }
+
+            nextSlide() {
+                this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+                this.goToSlide(this.currentSlide);
+            }
+
+            prevSlide() {
+                this.currentSlide = this.currentSlide === 0 ? this.totalSlides - 1 : this.currentSlide - 1;
+                this.goToSlide(this.currentSlide);
+            }
+
+            startAutoPlay() {
+                this.autoPlayInterval = setInterval(() => {
+                    this.nextSlide();
+                }, 5000);
+            }
+
+            stopAutoPlay() {
+                if (this.autoPlayInterval) {
+                    clearInterval(this.autoPlayInterval);
+                    this.autoPlayInterval = null;
+                }
+            }
+        }
+
+        // Instanciar o carrossel quando a página carregar
+        let carousel;
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            carousel = new NewsCarousel();
+        });
+
+        // Funções globais para os botões
+        function nextSlide() {
+            carousel.nextSlide();
+        }
+
+        function prevSlide() {
+            carousel.prevSlide();
+        }
+
+        // Navegação por teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                prevSlide();
+            } else if (e.key === 'ArrowRight') {
+                nextSlide();
+            }
+        });
+    </script>
+</body>
+</html>
