@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Valley - João Silva</title>
+    <meta name="description" content="Portfólio de desenvolvedor full stack com temática Stardew Valley. Projetos, habilidades e experiências em desenvolvimento web." />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-background">
+        <div class="clouds"></div>
+        <div class="stars"></div>
+        <div class="birds"></div>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+        </div>
+        
+        <div class="sidebar-content">
+            <div class="player-card">
+                <div class="player-avatar">
+                    <img src="src/assets/player-avatar.png" alt="Player Avatar" />
+                </div>
+                <h2 class="player-name">João Silva</h2>
+                <p class="player-title">Full Stack Developer</p>
+                
+                <div class="player-stats">
+                    <div class="stat">
+                        <span class="stat-icon">💻</span>
+                        <span class="stat-label">Coding</span>
+                        <div class="stat-bar">
+                            <div class="stat-fill" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-icon">🎨</span>
+                        <span class="stat-label">Design</span>
+                        <div class="stat-bar">
+                            <div class="stat-fill" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-icon">⚡</span>
+                        <span class="stat-label">Speed</span>
+                        <div class="stat-bar">
+                            <div class="stat-fill" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="player-skills">
+                    <span class="skill-badge">React</span>
+                    <span class="skill-badge">Node.js</span>
+                    <span class="skill-badge">TypeScript</span>
+                    <span class="skill-badge">Python</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <h1>🌾 Bem-vindo ao meu Vale! 🌾</h1>
+            <p>Aqui eu cultivo projetos incríveis, colho experiências valiosas e construo soluções que fazem a diferença.</p>
+            <div class="header-stars">
+                <span class="star">⭐</span>
+                <span class="star">✨</span>
+                <span class="star">🌟</span>
+            </div>
+        </header>
+
+        <!-- Projects Section -->
+        <section class="projects-section">
+            <h2>🌱 Meus Projetos</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-icon">🛍️</span>
+                        <h3>E-commerce Platform</h3>
+                    </div>
+                    <p>Plataforma completa de e-commerce com sistema de pagamentos integrado.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">PostgreSQL</span>
+                        <span class="tech-badge">Stripe</span>
+                    </div>
+                    <div class="project-footer">
+                        <span class="status-badge completed">Concluído</span>
+                        <button class="btn-outline">Ver Mais</button>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-icon">📝</span>
+                        <h3>Task Management App</h3>
+                    </div>
+                    <p>Aplicativo de gerenciamento de tarefas com colaboração em tempo real.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Vue.js</span>
+                        <span class="tech-badge">Firebase</span>
+                        <span class="tech-badge">TypeScript</span>
+                    </div>
+                    <div class="project-footer">
+                        <span class="status-badge development">Em Desenvolvimento</span>
+                        <button class="btn-outline">Ver Mais</button>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-icon">🌤️</span>
+                        <h3>Weather Dashboard</h3>
+                    </div>
+                    <p>Dashboard meteorológico com visualizações interativas e previsões.</p>
+                    <div class="project-tech">
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">D3.js</span>
+                        <span class="tech-badge">Weather API</span>
+                    </div>
+                    <div class="project-footer">
+                        <span class="status-badge completed">Concluído</span>
+                        <button class="btn-outline">Ver Mais</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section class="achievements-section">
+            <h2>🏅 Conquistas</h2>
+            <div class="carousel-container">
+                <div class="carousel" id="achievementsCarousel">
+                    <div class="carousel-track" id="carouselTrack">
+                        <div class="achievement-card">
+                            <div class="achievement-icon">🏆</div>
+                            <h3>Certificação AWS</h3>
+                            <p>2024</p>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">🥇</div>
+                            <h3>Hackathon Winner</h3>
+                            <p>2023</p>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">🌟</div>
+                            <h3>Open Source Contributor</h3>
+                            <p>2023</p>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">🎤</div>
+                            <h3>Tech Speaker</h3>
+                            <p>2022</p>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">🏆</div>
+                            <h3>Certificação AWS</h3>
+                            <p>2024</p>
+                        </div>
+                        <div class="achievement-card">
+                            <div class="achievement-icon">🥇</div>
+                            <h3>Hackathon Winner</h3>
+                            <p>2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="contact-card">
+                <h2>📬 Vamos Conversar!</h2>
+                <p>Interessado em trabalhar juntos? Entre em contato!</p>
+                <div class="contact-buttons">
+                    <button class="btn-primary">📧 Enviar E-mail</button>
+                    <button class="btn-outline">💼 LinkedIn</button>
+                    <button class="btn-outline">💻 GitHub</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
